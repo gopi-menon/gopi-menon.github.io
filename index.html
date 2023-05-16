@@ -1,4 +1,36 @@
 <!DOCTYPE html>
+
+<script>
+  function updateOptions() {
+    var firstDropdown = document.getElementById("first-dropdown");
+    var secondDropdown = document.getElementById("second-dropdown");
+
+    // Get the selected value from the first dropdown
+    var selectedValue = firstDropdown.value;
+
+    // Clear the options in the second dropdown
+    secondDropdown.innerHTML = "";
+
+    // Add options to the second dropdown based on the selected value
+    if (selectedValue === "India") {
+      var option1 = document.createElement("option");
+      option1.text = "Option A";
+      secondDropdown.add(option1);
+
+      var option2 = document.createElement("option");
+      option2.text = "Option B";
+      secondDropdown.add(option2);
+    } else if (selectedValue === "Option 2") {
+      var option3 = document.createElement("option");
+      option3.text = "Option C";
+      secondDropdown.add(option3);
+
+      var option4 = document.createElement("option");
+      option4.text = "Option D";
+      secondDropdown.add(option4);
+    }
+  }
+</script>
 <html>
 
 <head>
@@ -161,20 +193,93 @@
     </datalist>
   </form>
 
+  <!-- <form>
+    <label for="site"><br>Site:</label>
+    <input list="site_list" id="site" name="site" placeholder="type here..." />
+    <datalist id="site_list">
+      <option value="COE_UBR_CRK">
+      <option value="COE_UBR_MNL">
+      <option value="COE_UBR_HYD">
+      <option value="COE_UBR_VIZ">
+
+    </datalist>
+  </form> -->
+
+  <form>
+    <label for="business"><br>Business:</label>
+    <input list="business_list" id="business" name="business" placeholder="type here..." />
+    <datalist id="business_list">
+      <option value="Transit">
+      <option value="U4B">
+      <option value="New Mobility">
+      <option value="Rides">
+      <option value="Eats">
+      <option value="Freight">
+
+    </datalist>
+  </form>
+
+
+  <form>
+    <label for="tool"><br> Tool:</label>
+    <input list="tool_list" id="tool" name="tool" placeholder="type here.." />
+    <datalist id="tool_list">
+      <option value=zopim-chat>
+      <option value=bliss-gl>
+      <option value=salesforce-eats-whatsapp>
+      <option value=bliss-phone>
+      <option value=Zendesk>
+      <option value=LiveOps>
+      <option value=salesforce-transit-email>
+      <option value=bliss-chat>
+      <option value=SORT>
+      <option value=bliss-InApp>
+      <option value=U4B-bliss-InApp>
+      <option value=salesforce-eats-phone>
+      <option value=salesforce-transit-phone>
+      <option value=U4B>
+      <option value=salesforce-eats-email>
+
+    </datalist>
+  </form>
+
+
 
   <form>
     <button type="submit" onclick="submitForm()">Submit</button>
   </form>
+
+
+
 
   <script>
     function submitForm() {
       var type = document.getElementById("type").value;
       var start_date = document.getElementById("start-date").value;
       var end_date = document.getElementById("end-date").value;
-      var url = "https://querybuilder-ea.uberinternal.com/r/2M8G6l1a1/autorun?" + "requester_type=" + type + "&" + "start_date=" + start_date + "&" + "end_date=" + end_date;
+      var business = document.getElementById("business").value;
+      var tool = document.getElementById("tool").value;
+      var site = document.getElementById("site").value;
+
+
+      var url = "https://querybuilder-ea.uberinternal.com/r/2M8G6l1a1/autorun?" + "requester_type=" + type + "&" + "start_date=" + start_date + "&" + "end_date=" + end_date + "&" + "business=" + business + "&" + "tool=" + tool + "&" + "site=" + site;
       window.open(url, "_blank");
     }
   </script>
+
+ <!-- <form>
+    <label for="first-dropdown">First Dropdown:</label>
+    <select id="first-dropdown" onchange="updateOptions()">
+      <option value="Option 1">Option 1</option>
+      <option value="Option 2">Option 2</option>
+    </select>
+    <br><br>
+    <label for="second-dropdown">Second Dropdown:</label>
+    <select id="second-dropdown"></select>
+  </form> -->
+
+
+
 
   <!-- <button type="submit"
     onclick="window.open('https://querybuilder-ea.uberinternal.com/r/2M8G6l1a1/autorun?requester_type={}&start_date={}&end_date={}'.format(type, start - date, end - date)')">Submit</button>
